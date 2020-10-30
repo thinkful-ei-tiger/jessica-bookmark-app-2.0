@@ -58,7 +58,7 @@ function bookmarkEditItem(item) {
   }
   source += `</select>
             <label for="url">URL: </label>
-            <input name="url" id="url" value="${item.url}"/>
+            <input name="url" id="url" value="${item.url}">
             <label for="description">Description: </label>
             <textarea name="description">${item.desc}</textarea>
             <button class="submitEdit" data-item-id="${item.id}">Submit</button>

@@ -4,6 +4,16 @@ import store from "./store";
 import temp from "./templates";
 import api from "./api";
 
+
+function generateError(message) {
+  return `
+      <section class="error-content">
+        <button id="cancel-error">X</button>
+        <p>${message}</p>
+      </section>
+    `;
+}
+
 $.fn.extend({
   serializeJson: function () {
     const formData = new FormData(this[0]);
@@ -25,13 +35,29 @@ function render() {
       $(".main").html(temp.bookmarkListHome());
       break;
     case "editing":
-      //console.log("Editing ",store.getCurrentEditTarget() )
+     
       $(".main").html(temp.bookmarkEditItem(store.getCurrentEditTarget()));
       break;
     default:
       break;
   }
 }
+
+ function renderError() {
+   if (store.error) {
+     const el = generateError(STORE.error);
+     $(".error-container").html(el);
+   } else {
+     $(".error-container").empty();
+   }
+ }
+
+  function closeError() {
+    $(".error-container").on("click", "#cancel-error", () => {
+      STORE.setError(null);
+      renderError();
+    });
+  }
 
 function refresh(callback = function () {}) {
   api.getAllBookmarks().then((data) => {
@@ -88,6 +114,10 @@ function handleSubmitClicked() {
         store.stopEdit();
       });
     });
+    if ((err) => {
+      store.setError(err.message);
+      renderError();
+    });
   });
 }
 
@@ -97,7 +127,7 @@ function handleNewClicked() {
       store.addBookmark(item);
       store.editBookmark(item.id);
       render();
-    });
+    })
   });
 }
 
@@ -130,6 +160,8 @@ function setupEventHandlers() {
   handleNewClicked();
   handleSelectChanged();
   handleDeleteClicked();
+  renderError();
+  closeError();
 }
 
 export default {

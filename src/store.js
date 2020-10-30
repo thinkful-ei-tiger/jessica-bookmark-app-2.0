@@ -10,6 +10,9 @@ function status() {
     return "list";
   }
 }
+const setError = function (error) {
+  this.error = error;
+};
 
 function setFilterLevel(level) {
   this.filter = level;
@@ -79,4 +82,5 @@ export default {
   updateCurrentTarget,
   addBookmark,
   addListOfBookmarks,
+  setError,
 };

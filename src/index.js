@@ -1,6 +1,6 @@
 import $ from "jquery";
 
-import book from "./bookmarker";
+import book from "./bookmark";
 import store from "./store";
 import api from "./api";
 
@@ -10,7 +10,7 @@ $(() => {
   api.getAllBookmarks().then((list) => {
     store.addListOfBookmarks(list);
     book.render();
-  });
+  })
   book.setupEventHandlers();
 });
 
