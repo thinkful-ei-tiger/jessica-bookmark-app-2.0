@@ -1,0 +1,61 @@
+.flex {
+  display: flex;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.center {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background-color: #5d576b;
+  width: 50%;
+}
+
+.bookmark {
+  background-color: #99e1d9;
+  color: #5d576b;
+  width: 75%;
+  margin: 5px;
+  border: 2px solid #f7567c;
+}
+#box {
+  text-align: center;
+  background-color: #5d576b;
+  display: flex;
+}
+body {
+  background-color: #5d576b;
+  color: #f7567c;
+}
+.addbutton {
+  border-color: #f7567c;
+  background-color: #99e1d9;
+  color: #5d576b;
+  padding: 10px 15px;
+  font-size: 16px;
+}
+.selectfilter {
+  border-color: #f7567c;
+  background-color: #99e1d9;
+  color: #5d576b;
+  padding: 10px 15px;
+  font-size: 16px;
+}
+.goto, .edit{
+  background-color: #5d576b;
+  color: #f7567c;
+}

@@ -1,0 +1,1 @@
+fetch("https://thinkful-list-api.herokuapp.com/ei-student/items").then((t=>t.json())).then((t=>console.log(t)));
