@@ -1,17 +1,18 @@
 import $ from "jquery";
-
-import book from "./bookmark";
-import store from "./store";
 import api from "./api";
-
 import "./index.css";
+import STORE from "./store.js";
+import bookmarks from "./bookmarks.js";
 
+const main = function () {
+  api
+    .getBookmarks()
+    .then((res) => res.json())
+    .then((res) => {
+      res.forEach((bookmark) => STORE.addBookmark(bookmark));
+      bookmarks.render();
+    });
+  bookmarks.bindEventListeners();
+};
 
-$(() => {
-  api.getAllBookmarks().then((list) => {
-    store.addListOfBookmarks(list);
-    book.render();
-  })
-  book.setupEventHandlers();
-});
-
+$(main);

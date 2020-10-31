@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/thinkful-ei-tiger/jessica-bookmark-app-2.0#readme",
   "dependencies": {
-    "jquery": "^3.5.1"
+    "jquery": "^3.5.1",
+    "jquery-validation": "^1.19.2"
   },
   "devDependencies": {
     "css-loader": "^5.0.0",

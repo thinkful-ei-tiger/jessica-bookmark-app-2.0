@@ -1,86 +1,69 @@
 let bookmarks = [];
-let editing = false;
-let target = "";
-let filter = 1;
+let adding = false;
+let error = null;
+let filter = false;
+let filteredBookmarks = [];
 
-function status() {
-  if (this.editing) {
-    return "editing";
-  } else {
-    return "list";
+const addBookmark = function (bookmark) {
+  for (let i = 0; i < bookmarks.length; i++) {
+    if (bookmarks[i]) {
+      bookmarks[i].expand = false;
+    }
   }
-}
-const setError = function (error) {
-  this.error = error;
+  bookmarks.push(bookmark);
+  // toggles
+  this.adding = false;
 };
 
-function setFilterLevel(level) {
-  this.filter = level;
-}
-
-// ----- Bookmark functions -----
-
-function getBookmarks() {
-  return this.bookmarks;
-}
-
-function findById(id) {
-  return this.bookmarks.find((itm) => itm.id === id);
-}
-
-function toggleExpanded(id) {
-  this.findById(id).expanded = !this.findById(id).expanded;
-}
-
-function editBookmark(id) {
-  this.editing = true;
-  this.target = id;
-}
-
-function getCurrentEditTarget() {
-  return this.findById(this.target);
-}
-
-function stopEdit() {
-  this.editing = false;
-  this.target = "";
-}
-
-function updateCurrentTarget(newObj) {
-  Object.assign(this.findById(this.target), newObj);
-}
-
-function addBookmark(obj) {
-  this.bookmarks.push(obj);
-  this.findById(obj.id).expanded = false;
-}
-
-function addListOfBookmarks(list) {
-  for (let item of list) {
-    let itm = item;
-    itm.expanded = false;
-    this.addBookmark(itm);
+const expandBookmark = function (id) {
+  let expandedBookmark = bookmarks.find((bookmark) => bookmark.id === id);
+  //toggle
+  if (expandedBookmark.expand) {
+    expandedBookmark.expand = false;
+  } else {
+    expandedBookmark.expand = true;
   }
-}
+};
 
-// ----- Exports -----
+const deleteBookmark = function (id) {
+  this.bookmarks = this.bookmarks.filter((bookmark) => bookmark.id !== id);
+};
+//toggle
+const setAdding = function (param) {
+  this.adding = param;
+};
+
+//filter
+const filterBookmarks = function (filterNumber) {
+  this.filter = true;
+  this.bookmarks.forEach((bookmark) => {
+    if (bookmark.rating >= filterNumber) {
+      this.filteredBookmarks.push(bookmark);
+    }
+  });
+};
+
+//toggle
+const setFiltering = function (param) {
+  this.filter = param;
+};
+
+// error
+const setError = function (errorMessage) {
+  this.error = errorMessage;
+};
 
 export default {
   bookmarks,
-  editing,
-  target,
+  adding,
+  error,
   filter,
-  status,
-  setFilterLevel,
-  getBookmarks,
-  findBookmarkById: findById,
-  findById,
-  toggleExpanded,
-  editBookmark,
-  getCurrentEditTarget,
-  stopEdit,
-  updateCurrentTarget,
   addBookmark,
-  addListOfBookmarks,
+  expandBookmark,
+  deleteBookmark,
+  setAdding,
+  setFiltering,
   setError,
+  filterBookmarks,
+  filteredBookmarks,
 };
