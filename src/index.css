@@ -236,6 +236,6 @@ input[type="button"] {
 
 @media screen and (min-width: 800px) {
   .flex-container {
-    width: 600;
+    width: 600px;
   }
 }
