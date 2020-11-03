@@ -230,12 +230,12 @@ input[type="button"] {
 /******MEDIA QUERIES*****/
 @media screen and (min-width: 480px) {
   body {
-    width: 480px;
+    width: 340px;
   }
 }
 
 @media screen and (min-width: 800px) {
   .flex-container {
-    width: 500px;
+    width: 600;
   }
 }
