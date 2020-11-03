@@ -83,7 +83,7 @@ const generateBookMarkAddHtml = function () {
     <legend class="form">Bookmark Information</legend>
     <label class="form" for="title">Title:</label><br>
     <input type="text" id="title" name="title" required><br>
-    <div class"bookmark-hide" role="radiogroup" aria-labelledby="rating">
+    <div class="bookmark-hide" role="radiogroup" aria-labelledby="rating">
       <label class="form" id="rating">Rating:</label><br>
       <label class="bookmark-hide" for="rating5">5 stars</label>
       <input type="radio" name="rating" id="rating5" value="5" checked>5 stars
@@ -96,7 +96,7 @@ const generateBookMarkAddHtml = function () {
       <label class="bookmark-hide" for="rating1">1 star</label>
       <input type="radio" name="rating" id="rating1" value="1">1 star<br>
     </div>
-    <lable class="form">Description:<br>
+    <label class="form">Description:<br>
       <textarea name="desc" id="bookmark-description" cols="100" rows="10" ></textarea>
     </lable><br>
     <label class="form" for="url">Bookmark URL:</label><br>

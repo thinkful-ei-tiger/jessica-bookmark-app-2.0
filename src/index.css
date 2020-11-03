@@ -43,7 +43,7 @@ color: red;
 border: 1px solid red;
 margin: 10px;
 border-radius: 12px;
-background-color: white);
+background-color: white;
 }
 
 .error-container h2 {
@@ -84,7 +84,7 @@ background-color: white);
   font-family: sans-serif;
   background-color: white;
   border-radius: 12px;
-  padding: 3px, 7px, 3px, 5px;
+  padding: 3px 7px 3px 5px;
   margin-top: 10px;
   margin-left: 10px;
   box-shadow: 0 1px 0 1px lightgray;
@@ -165,7 +165,7 @@ a:hover {
   font-family: sans serif;
   background-color: white;
   border-radius: 12px;
-  padding: 3px, 7px, 3px, 5px;
+  padding: 3px 7px 3px 5px;
   margin-bottom: 10px;
   margin-right: 10px;
 }
@@ -175,7 +175,7 @@ a:hover {
   font-family: sans-serif;
   background-color: white;
   border-radius: 12px;
-  padding: 3px, 7px, 3px, 5px;
+  padding: 3px 7px 3px 5px;
   margin-bottom: 10px;
   margin-right: 10px;
   box-shadow: 0 1px 0 1px lightgray;
@@ -226,13 +226,13 @@ input[type="button"] {
 }
 
 /******MEDIA QUERIES*****/
-@media screen and (max-width: 283px) {
+@media screen and (min-width: 480px) {
   body {
     width: 283px;
   }
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 800px) {
 
   .flex-container {
     width: 500px;
