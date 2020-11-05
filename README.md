@@ -20,7 +20,7 @@ I can select from a dropdown (a <select> element) a "minimum rating" to filter t
 t
 
 
-(https://thinkful-ei-tiger.github.io/jessica-bookmark-app-2.0/)
+[https://thinkful-ei-tiger.github.io/jessica-bookmark-app-2.0/](https://thinkful-ei-tiger.github.io/jessica-bookmark-app-2.0/)
 
 
 
