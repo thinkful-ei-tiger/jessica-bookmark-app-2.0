@@ -17,7 +17,7 @@ I receive appropriate feedback when I cannot submit a bookmark
 
 Check all validations in the API documentation it pops an errror when no data is entered.
 I can select from a dropdown (a <select> element) a "minimum rating" to filter the list by all bookmarks rated at or above the chosen selection
-t
+
 
 
 [https://thinkful-ei-tiger.github.io/jessica-bookmark-app-2.0/](https://thinkful-ei-tiger.github.io/jessica-bookmark-app-2.0/)
