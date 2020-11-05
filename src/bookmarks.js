@@ -6,8 +6,8 @@ const generateStarRating = function (bookmark) {
   let starRating;
   let starChecked = bookmark.rating;
   let starUnchecked = 5 - starChecked;
-  const starCheckedHtml = `<span class="star checked"></span>`;
-  const starUncheckedHtml = `<span class="star"></span>`;
+  const starCheckedHtml = `<span class="fa fa-star checked"></span>`;
+  const starUncheckedHtml = `<span class="fa fa-star"></span>`;
 
   starRating =
     starCheckedHtml.repeat(starChecked) +
@@ -36,7 +36,7 @@ const generateBookMarkHtml = function (bookmark) {
       </div>
     `;
 };
-
+//loop through bookmarks and display
 const generateBookMarksHtml = function (bookmarks) {
   const bookmarksHtml = bookmarks.map((bookmark) =>
     generateBookMarkHtml(bookmark)
@@ -48,8 +48,8 @@ const generateBookMarksHtml = function (bookmarks) {
 const generateBookmarkHeader = function () {
   $("#main").html(`
     
-    <header>
-    <h1>LYNKFARM</h1>
+    <header role="banner">
+    <h1>LynkFarm</h1>
   </header>
 <!-- BOOKMARKS CONTROLS-->
   <div class="main-container" role="main">
@@ -83,7 +83,7 @@ const generateBookMarkAddHtml = function () {
     <legend class="form">Bookmark Information</legend>
     <label class="form" for="title">Title:</label><br>
     <input type="text" id="title" name="title" required><br>
-    <div class="bookmark-hide" role="radiogroup" aria-labelledby="rating">
+    <div class"bookmark-hide" role="radiogroup" aria-labelledby="rating">
       <label class="form" id="rating">Rating:</label><br>
       <label class="bookmark-hide" for="rating5">5 stars</label>
       <input type="radio" name="rating" id="rating5" value="5" checked>5 stars
@@ -96,7 +96,7 @@ const generateBookMarkAddHtml = function () {
       <label class="bookmark-hide" for="rating1">1 star</label>
       <input type="radio" name="rating" id="rating1" value="1">1 star<br>
     </div>
-    <label class="form">Description:<br>
+    <lable class="form">Description:<br>
       <textarea name="desc" id="bookmark-description" cols="100" rows="10" ></textarea>
     </lable><br>
     <label class="form" for="url">Bookmark URL:</label><br>
@@ -129,7 +129,7 @@ const renderButtonClose = function () {
   $(".js-error-container").remove();
 };
 
-
+// if there is an error, render error container
 const renderError = function () {
   if (STORE.error) {
     if (STORE.adding) {
@@ -151,10 +151,10 @@ const serializeJson = function (form) {
   return JSON.stringify(o);
 };
 
-//change on click adding
+//change on click adding: false => adding: true
 const handleBookMarkAdd = function () {
   $("#main").on("click", ".js-button-add", function () {
-   
+    //console.log('add button was clicked')
     if (!STORE.adding) {
       STORE.adding = true;
     }
@@ -185,16 +185,16 @@ const handleBookmarkSubmit = function () {
 //render
 const render = function () {
   $("#main").html(generateBookmarkHeader());
-  // render bookmark 
+  // render bookmark form if adding: true
   if (STORE.adding) {
-   
+    //console.log('adding test')
     $(".user-controls").toggleClass("bookmark-hide");
     $(".js-error-container-main").toggleClass("bookmark-hide");
     $(".js-bookmark-container").html(generateBookMarkAddHtml());
     renderError();
     bindEventListeners();
 
-    //render 
+    //render bookmarks if any
   } else if (STORE.filter) {
     let bookmarksFilteredCopy = [...STORE.filteredBookmarks];
     const bookmarkFilteredHtml = generateBookMarksHtml(bookmarksFilteredCopy);
@@ -204,19 +204,19 @@ const render = function () {
     bindEventListeners();
   } else {
     const bookmarkHtml = generateBookMarksHtml(STORE.bookmarks);
-    // add the html 
+    // add the html to the bookmark container
     $(".js-bookmark-container").html(bookmarkHtml);
     renderError();
     bindEventListeners();
   }
 };
-//target bookmark 
+//target bookmark ids
 const getBookmarkIdFromElement = function (targetElement) {
   return $(targetElement)
     .closest(".js-bookmark-condensed-container")
     .data("item-id");
 };
-//expand bookmark on click
+//expand bookmark details on click
 const handleBookmarkExpand = function () {
   $(".js-bookmark-container").on("click", ".js-expand-button", (e) => {
     const id = getBookmarkIdFromElement(e.currentTarget);
@@ -224,7 +224,7 @@ const handleBookmarkExpand = function () {
     render();
   });
 };
-//Delete bookmark from store
+//Delete bookmark from api/store
 const handleBookmarkDelete = function () {
   $(".js-delete-button").on("click", (e) => {
     const id = $(e.currentTarget).parent().parent().parent().data("item-id");
